@@ -1,6 +1,5 @@
 <div class="container-fluid">
   <div class="row">
-
     <div class="sidebar">
       <div class="list-group">
         {{#each model.campgrounds as |campground|}}
@@ -20,16 +19,23 @@
         </button>
       </div>
     </div>
-
     <div 
       class="col-12 main"
     >
+      <button  
+        class="btn btn-secondary menu"
+        {{action "toggleMenu"}}
+      >
+        {{fa-icon "bars"}}
+      </button>
       <h3>{{model.selected.name}}</h3>
       {{#if model.selected}}
-        <img src="/assets/images/00676_Hiking at the State Park 1_LR__DSC8541.jpg">
+        <img 
+          src="/assets/images/00676_Hiking at the State Park 1_LR__DSC8541.jpg" 
+          alt="Visit this beautiful campsite"
+        >
       {{/if}}
     </div>
-
   </div>
 </div>
 

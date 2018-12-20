@@ -5,13 +5,5 @@ export default Route.extend({
     return {
       campgrounds: this.store.findAll('campground')
     }
-  },
-
-  activate: function() {
-    $(document).ready(function() {
-      $('[data-toggle=offcanvas]').click(function() {
-        $('.row-offcanvas').toggleClass('active');
-      });
-    });
   }
 });

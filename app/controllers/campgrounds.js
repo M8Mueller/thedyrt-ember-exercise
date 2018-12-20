@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { set } from '@ember/object';
+import $ from 'jquery';
 
 export default Controller.extend({
   isShowingModal: false,
@@ -11,6 +12,10 @@ export default Controller.extend({
     toggleModal() {
       set(this, 'name', '');
       this.toggleProperty('isShowingModal');
+    },
+    toggleMenu() {
+      $('.sidebar').toggleClass('open'); // Lazy
+      $('.main').toggleClass('open'); // Lazy
     },
     add() {
       this.store.createRecord('campground', {
