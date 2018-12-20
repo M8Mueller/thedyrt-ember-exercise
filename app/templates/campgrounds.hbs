@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="sidebar">
+      <div class="list-group">
+        {{#each model.campgrounds as |campground|}}
+          <button 
+            class="list-group-item list-group-item-action" 
+            {{action "select" campground}}
+          >
+            {{campground.name}}
+          </button>
+        {{/each}}
+
+        <button 
+          class="list-group-item list-group-item-action" 
+          {{action "toggleModal"}}
+        >
+          {{fa-icon "plus"}} Add
+        </button>
+      </div>
+    </div>
+
+    <div 
+      class="col-12 main"
+    >
+      <h3>{{model.selected.name}}</h3>
+      {{#if model.selected}}
+        <img src="/assets/images/00676_Hiking at the State Park 1_LR__DSC8541.jpg">
+      {{/if}}
+    </div>
+
+  </div>
+</div>
+
+{{#if isShowingModal}}
+  {{#modal-dialog
+    translucentOverlay=true
+  }}
+    <h4>Add Campground</h4>
+    {{#bs-form 
+      formLayout="vertical" 
+      model=this 
+      onSubmit=(action "add" name) 
+    as |form|
+    }}
+      {{form.element 
+        controlType="text"
+        placeholder="Campground Name" 
+        property="name" 
+        required=true
+      }}
+      {{bs-button 
+        defaultText="Cancel" 
+        type="secondary" 
+        buttonType="button" 
+        onClick=(action "toggleModal")
+      }}
+      {{bs-button 
+        defaultText="Submit" 
+        type="primary" 
+        buttonType="submit"
+      }}
+    {{/bs-form}}
+
+  {{/modal-dialog}}
+{{/if}}

@@ -7,6 +7,8 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('campgrounds');
+  this.route('add');
 });
 
 export default Router;
